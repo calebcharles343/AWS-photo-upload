@@ -73,7 +73,8 @@ export default function Images() {
     }
   };
   return (
-    <div className="max-w-[800px] flex items-center justify-center flex-col p-4 gap-2">
+    <div className="max-w-[800px] flex flex-col items-center justify-center p-4 gap-4">
+      {/* Hidden file input */}
       <input
         id="imageInput"
         type="file"
@@ -81,22 +82,30 @@ export default function Images() {
         onChange={handleUpload}
       />
 
+      {/* Upload button */}
       <label
         htmlFor="imageInput"
-        className="flex items-center justify-center border border-solid border-white p-2 rounded-lg cursor-pointer w-20"
+        className="flex items-center justify-center border border-solid border-white p-2 rounded-lg cursor-pointer w-32 md:w-28 sm:w-24"
       >
         {uploading ? "..." : "Upload"}
       </label>
+
+      {/* Error messages */}
       {errorFile && <ErrorMessage>{errorFile}</ErrorMessage>}
       {uploadError && <ErrorMessage>{uploadError}</ErrorMessage>}
-      <p className="self-start">Posts</p>
 
-      <div className="grid grid-cols-3 gap-x-10 gap-y-10 md:grid-cols-2 md:gap-y-8 md:gap-x-8 sm:grid-cols-1">
+      {/* Posts header */}
+      <p className="self-start text-lg font-medium md:text-base sm:text-sm">
+        Posts
+      </p>
+
+      {/* Image grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {fetchError && <ErrorMessage>Failed to load images</ErrorMessage>}
-        {isFetching && <h1>loading</h1>}
+        {isFetching && <h1>Loading...</h1>}
         {images &&
           urls?.urls.map((url: { url: string; key: string }) => (
-            <Image url={url} refetch={refetch} />
+            <Image key={url.key} url={url} refetch={refetch} />
           ))}
       </div>
     </div>
