@@ -27,7 +27,11 @@ export default function Images() {
     isLoading: isFetching,
     error: fetchError,
     refetch,
-  } = useQuery<ImageUrls>("http://localhost:3001/images", "GET", headers);
+  } = useQuery<ImageUrls>(
+    "https://backend-aws-a3-bucket.onrender.com/images",
+    "GET",
+    headers
+  );
 
   useEffect(() => {
     setUrls(images);
@@ -56,7 +60,7 @@ export default function Images() {
       try {
         // Use mutate function to trigger the upload process
         await upLoadImage(
-          "http://localhost:3001/images",
+          "https://backend-aws-a3-bucket.onrender.com/images",
           "POST",
           formData,
           headers

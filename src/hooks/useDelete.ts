@@ -8,7 +8,7 @@ export async function deleteImage(keyMain: string) {
   try {
     const response = await axios({
       method: "delete",
-      url: `http://localhost:3001/images/${userId}/${key}`, // Correct URL
+      url: `https://backend-aws-a3-bucket.onrender.com/images/${userId}/${key}`, // Correct URL
     });
     console.log(response.data.message); // Success message
     alert("File deleted successfully!");
