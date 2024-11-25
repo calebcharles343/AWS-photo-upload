@@ -1,4 +1,4 @@
-import profileImg from "../../public/img/colorful.jpg";
+import profileImg from "../assets/img/colorful.jpg";
 
 export default function Profile() {
   return (

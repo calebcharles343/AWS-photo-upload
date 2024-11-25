@@ -102,7 +102,13 @@ export default function Images() {
       {/* Image grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
         {fetchError && <ErrorMessage>Failed to load images</ErrorMessage>}
-        {isFetching && <h1>Loading...</h1>}
+        {isFetching && (
+          <h1>
+            Loading... 'Please wait. For every first request, there is a
+            45-second delay for the backend deployed on the free plan of
+            Render.com. Thank you'
+          </h1>
+        )}
         {images &&
           urls?.urls.map((url: { url: string; key: string }) => (
             <Image key={url.key} url={url} refetch={refetch} />
