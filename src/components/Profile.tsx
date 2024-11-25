@@ -10,7 +10,7 @@ export default function Profile() {
           alt="profile"
         />
         <p className="">Charles Caleb</p>
-        <span className="text-[#999]">Software Engineer</span>
+        <span className="text-[#999]">Software Developer</span>
       </div>
     </div>
   );
