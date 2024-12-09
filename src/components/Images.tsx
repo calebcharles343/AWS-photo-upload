@@ -90,6 +90,7 @@ export default function Images() {
       {uploadError && <ErrorMessage>{uploadError}</ErrorMessage>}
 
       <div className="flex flex-col items-center gap-2">
+        <h1 className="text-3xl font-extrabold">TUNGA IMPACT ACADAMY</h1>
         <p className="text-2xl">
           Image file upload with AWS S3 Bucket, NodeJS and React
         </p>
