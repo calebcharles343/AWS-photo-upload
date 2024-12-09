@@ -90,8 +90,10 @@ export default function Images() {
       {uploadError && <ErrorMessage>{uploadError}</ErrorMessage>}
 
       <div className="flex flex-col items-center gap-2">
-        <h1 className="text-3xl font-extrabold">TUNGA IMPACT ACADAMY</h1>
-        <p className="text-2xl">
+        <h1 className="text-3xl font-extrabold text-center">
+          TUNGA IMPACT ACADEMY
+        </h1>
+        <p className="text-2xl text-center">
           Image file upload with AWS S3 Bucket, NodeJS and React
         </p>
 
@@ -99,7 +101,7 @@ export default function Images() {
           Posts
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12 w-full">
           {fetchError && <ErrorMessage>Failed to load images</ErrorMessage>}
           {isFetching && (
             <h1 className="self-center">
