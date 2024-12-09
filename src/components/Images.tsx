@@ -91,7 +91,7 @@ export default function Images() {
 
       <div className="flex flex-col items-center gap-2">
         <p className="text-2xl">
-          File image file upload with AWS S3 Bucket, NodeJS and React
+          Image file upload with AWS S3 Bucket, NodeJS and React
         </p>
 
         <p className="self-start text-lg font-extrabold md:text-base sm:text-lg">
