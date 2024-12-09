@@ -5,11 +5,10 @@ import useQuery from "../hooks/useQuery";
 import { ImageUrls } from "../interfaces";
 import ErrorMessage from "./ErrorMessage";
 
-const validFileTypes = ["image/jpg", "image/jpeg", "image/png"];
-
 export default function Images() {
   const [errorFile, setErrorFile] = useState<string>();
   const [urls, setUrls] = useState<ImageUrls | null>();
+  const validFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
   const headers = {
     "x-user-id": "123",
@@ -36,8 +35,6 @@ export default function Images() {
   useEffect(() => {
     setUrls(images);
   }, [refetch]);
-
-  console.log(images?.urls);
 
   const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -72,9 +69,9 @@ export default function Images() {
       }
     }
   };
+
   return (
     <div className="max-w-[800px] flex flex-col items-center justify-center p-4 gap-4">
-      {/* Hidden file input */}
       <input
         id="imageInput"
         type="file"
@@ -82,7 +79,6 @@ export default function Images() {
         onChange={handleUpload}
       />
 
-      {/* Upload button */}
       <label
         htmlFor="imageInput"
         className="flex items-center justify-center border border-solid border-white p-2 rounded-lg cursor-pointer w-32 md:w-28 sm:w-24"
@@ -90,29 +86,32 @@ export default function Images() {
         {uploading ? "..." : "Upload"}
       </label>
 
-      {/* Error messages */}
       {errorFile && <ErrorMessage>{errorFile}</ErrorMessage>}
       {uploadError && <ErrorMessage>{uploadError}</ErrorMessage>}
 
-      {/* Posts header */}
-      <p className="self-start text-lg font-medium md:text-base sm:text-sm">
-        Posts
-      </p>
+      <div className="flex flex-col items-center gap-2">
+        <p className="text-2xl">
+          File image file upload with AWS S3 Bucket, NodeJS and React
+        </p>
 
-      {/* Image grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-        {fetchError && <ErrorMessage>Failed to load images</ErrorMessage>}
-        {isFetching && (
-          <h1>
-            Loading... 'Please wait. For every first request, there is a
-            45-second delay for the backend deployed on the free plan of
-            Render.com. Thank you'
-          </h1>
-        )}
-        {images &&
-          urls?.urls.map((url: { url: string; key: string }) => (
-            <Image key={url.key} url={url} refetch={refetch} />
-          ))}
+        <p className="self-start text-lg font-extrabold md:text-base sm:text-lg">
+          Posts
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 w-full">
+          {fetchError && <ErrorMessage>Failed to load images</ErrorMessage>}
+          {isFetching && (
+            <h1 className="self-center">
+              Loading... 'Please wait. For every first request, there is a
+              45-second delay for the backend deployed on the free plan of
+              Render.com. Thank you'
+            </h1>
+          )}
+          {images &&
+            urls?.urls.map((url: { url: string; key: string }) => (
+              <Image key={url.key} url={url} refetch={refetch} />
+            ))}
+        </div>
       </div>
     </div>
   );
